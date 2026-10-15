@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B1220">
+
+  <title>SmartCalc | Free Online Calculator</title>
+  <meta name="description"
+        content="A modern free online calculator with keyboard input, instant calculations, basic math operations and calculation history.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://YOUR-PROJECT.vercel.app/">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SmartCalc home">
+      <span class="brand-icon">∑</span>
+      <span>SmartCalc</span>
+    </a>
+
+    <div class="header-right">
+      <span class="status">
+        <span class="dot"></span>
+        Ready to calculate
+      </span>
+      <button id="theme-toggle" class="theme-toggle"
+              type="button" aria-label="Toggle theme">☼</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <span class="eyebrow">YOUR EVERYDAY MATH WORKSPACE</span>
+      <h1>Numbers made <span>simple.</span></h1>
+      <p>
+        A modern calculator for everyday mathematics.
+        Type an expression, use your keyboard or click the keys.
+      </p>
+    </section>
+
+    <section class="workspace">
+      <div class="calculator">
+        <div class="calc-top">
+          <span class="section-label">STANDARD CALCULATOR</span>
+          <button id="clear" class="text-button" type="button">
+            CLEAR ALL
+          </button>
+        </div>
+
+        <div class="display">
+          <label for="expression-input" class="display-label">
+            YOUR EXPRESSION
+          </label>
+
+          <input
+            id="expression-input"
+            class="expression-input"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Type 20 + 10..."
+            aria-label="Enter a mathematical expression"
+          >
+
+          <div class="result-divider"></div>
+
+          <div class="display-label">RESULT</div>
+
+          <div id="result" class="big-result"
+               aria-live="polite" aria-atomic="true">0</div>
+
+          <div id="expression" class="expression"
+               aria-live="polite">Ready to calculate</div>
+        </div>
+
+        <div class="keypad" id="keypad" aria-label="Calculator keypad">
+          <button class="key utility" data-action="clear">AC</button>
+          <button class="key utility" data-action="backspace"
+                  aria-label="Delete last character">⌫</button>
+          <button class="key utility" data-action="percent">%</button>
+          <button class="key operator" data-value="÷"
+                  data-action="insert">÷</button>
+
+          <button class="key" data-value="7" data-action="insert">7</button>
+          <button class="key" data-value="8" data-action="insert">8</button>
+          <button class="key" data-value="9" data-action="insert">9</button>
+          <button class="key operator" data-value="×"
+                  data-action="insert">×</button>
+
+          <button class="key" data-value="4" data-action="insert">4</button>
+          <button class="key" data-value="5" data-action="insert">5</button>
+          <button class="key" data-value="6" data-action="insert">6</button>
+          <button class="key operator" data-value="−"
+                  data-action="insert">−</button>
+
+          <button class="key" data-value="1" data-action="insert">1</button>
+          <button class="key" data-value="2" data-action="insert">2</button>
+          <button class="key" data-value="3" data-action="insert">3</button>
+          <button class="key operator" data-value="+"
+                  data-action="insert">+</button>
+
+          <button class="key utility" data-action="sign">±</button>
+          <button class="key" data-value="0" data-action="insert">0</button>
+          <button class="key" data-value="." data-action="insert">.</button>
+          <button class="key equals" data-action="equals">=</button>
+        </div>
+
+        <div class="keyboard-tip">
+          <span><kbd>0–9</kbd> Numbers</span>
+          <span><kbd>Enter</kbd> Calculate</span>
+          <span><kbd>Esc</kbd> Clear</span>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <section class="panel-card">
+          <span class="section-label">QUICK CALCULATION</span>
+          <h2>Enter your numbers</h2>
+
+          <form id="quick-form">
+            <label for="first">First number</label>
+            <input id="first" type="number" step="any"
+                   placeholder="e.g. 20" required>
+
+            <label for="second">Second number</label>
+            <input id="second" type="number" step="any"
+                   placeholder="e.g. 10" required>
+
+            <label for="operation">Operation</label>
+            <select id="operation">
+              <option value="add">Addition (+)</option>
+              <option value="subtract">Subtraction (−)</option>
+              <option value="multiply">Multiplication (×)</option>
+              <option value="divide">Division (÷)</option>
+            </select>
+
+            <button class="calculate-button" type="submit">
+              Calculate numbers <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        </section>
+
+        <section class="panel-card history-card">
+          <div class="history-heading">
+            <div>
+              <span class="section-label">YOUR ACTIVITY</span>
+              <h2>Recent calculations</h2>
+            </div>
+            <button id="clear-history" class="text-button"
+                    type="button">Clear</button>
+          </div>
+
+          <div id="history" aria-live="polite">
+            <p class="empty-history">
+              Your recent calculations will appear here.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel-card shortcut-card">
+          <span class="section-label">KEYBOARD SHORTCUTS</span>
+          <div class="shortcut-row"><span>Calculate</span><kbd>Enter</kbd></div>
+          <div class="shortcut-row"><span>Delete character</span><kbd>⌫</kbd></div>
+          <div class="shortcut-row"><span>Clear expression</span><kbd>Esc</kbd></div>
+          <p>Click the expression field and start typing.</p>
+        </section>
+      </aside>
+    </section>
+
+    <section class="info">
+      <span class="eyebrow">BUILT FOR EVERYDAY MATH</span>
+      <h2>Everything you need, in one place.</h2>
+
+      <div class="info-grid">
+        <article>
+          <div class="feature-icon">＋</div>
+          <h3>Essential operations</h3>
+          <p>Add, subtract, multiply and divide with ease.</p>
+        </article>
+
+        <article>
+          <div class="feature-icon">⌨</div>
+          <h3>Type or click</h3>
+          <p>Use your keyboard or the visible on-screen keypad.</p>
+        </article>
+
+        <article>
+          <div class="feature-icon">↺</div>
+          <h3>Review your work</h3>
+          <p>Check recent calculations and reuse their expressions.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>SmartCalc</span>
+    <span>Simple mathematics. Clear results.</span>
+  </footer>
+</body>
+</html>
